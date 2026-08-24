@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta name="description" content="Rajaji Safari Professional Admin Dashboard">
+
+<title>Rajaji Safari | Admin Dashboard</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Inter,Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:#f3f6f3;
+  color:#172219;
+}
+
+button,input,select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+/* HEADER */
+.header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:linear-gradient(135deg,#061b0e,#18552f);
+  color:#fff;
+  box-shadow:0 8px 30px rgba(0,0,0,.18);
+}
+
+.header-inner{
+  max-width:1450px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand-icon{
+  width:46px;
+  height:46px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:14px;
+  font-size:24px;
+}
+
+.brand h1{
+  font-size:21px;
+}
+
+.brand p{
+  color:#c9d9ce;
+  font-size:11px;
+  margin-top:2px;
+}
+
+.header-actions{
+  display:flex;
+  gap:8px;
+}
+
+.hbtn{
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.1);
+  color:#fff;
+  padding:10px 14px;
+  border-radius:10px;
+  font-weight:700;
+}
+
+.hbtn:hover{
+  background:rgba(255,255,255,.18);
+}
+
+.logout{
+  background:#b72f27;
+  border-color:#b72f27;
+}
+
+/* MAIN */
+.container{
+  max-width:1450px;
+  margin:auto;
+  padding:28px 18px 50px;
+}
+
+.hero-title{
+  margin-bottom:22px;
+}
+
+.hero-title h2{
+  font-size:28px;
+}
+
+.hero-title p{
+  color:#68736b;
+  margin-top:4px;
+}
+
+/* STATS */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+  margin-bottom:22px;
+}
+
+.stat{
+  background:#fff;
+  border:1px solid #e1e8e1;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.05);
+}
+
+.stat-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.stat-icon{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#edf6ef;
+}
+
+.stat-label{
+  color:#6d766f;
+  font-size:12px;
+  margin-top:12px;
+}
+
+.stat-value{
+  font-size:26px;
+  font-weight:900;
+  margin-top:3px;
+}
+
+.green .stat-value{color:#18703c}
+.orange .stat-value{color:#c47b00}
+.red .stat-value{color:#c0392b}
+.gold .stat-value{color:#8a6414}
+
+/* PANEL */
+.panel{
+  background:#fff;
+  border:1px solid #e1e8e1;
+  border-radius:18px;
+  box-shadow:0 6px 20px rgba(0,0,0,.05);
+  margin-bottom:20px;
+}
+
+.panel-head{
+  padding:19px 20px;
+  border-bottom:1px solid #edf0ed;
+}
+
+.panel-head h3{
+  font-size:18px;
+}
+
+.panel-head p{
+  color:#737c75;
+  font-size:12px;
+  margin-top:3px;
+}
+
+/* FILTERS */
+.filters{
+  padding:18px;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr auto;
+  gap:10px;
+}
+
+input,select{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d5ddd6;
+  border-radius:10px;
+  background:#fff;
+  outline:none;
+}
+
+input:focus,select:focus{
+  border-color:#287047;
+  box-shadow:0 0 0 3px rgba(40,112,71,.1);
+}
+
+.export{
+  border:0;
+  background:#1d6138;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.export:hover{
+  background:#154a2b;
+}
+
+/* TABLE */
+.booking-head{
+  padding:18px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #edf0ed;
+}
+
+.count{
+  color:#737c75;
+  font-size:12px;
+}
+
+.table-wrap{
+  overflow:auto;
+}
+
+table{
+  width:100%;
+  min-width:1450px;
+  border-collapse:collapse;
+}
+
+th{
+  background:#f0f5f1;
+  color:#39483e;
+  padding:13px;
+  text-align:left;
+  font-size:11px;
+  white-space:nowrap;
+}
+
+td{
+  padding:12px 13px;
+  border-bottom:1px solid #edf0ed;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+tr:hover{
+  background:#fafcf9;
+}
+
+.booking-id{
+  color:#176437;
+  font-weight:900;
+}
+
+.status-select,
+.payment-select{
+  padding:7px 8px;
+  border-radius:7px;
+  font-size:11px;
+}
+
+.whatsapp{
+  display:inline-block;
+  background:#25d366;
+  color:#fff;
+  text-decoration:none;
+  padding:7px 10px;
+  border-radius:7px;
+  font-weight:800;
+}
+
+.delete{
+  border:0;
+  background:#ffe8e5;
+  color:#b42318;
+  padding:7px 10px;
+  border-radius:7px;
+  font-weight:800;
+}
+
+.empty{
+  padding:65px 20px;
+  text-align:center;
+  color:#737c75;
+}
+
+.empty-icon{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  color:#68736b;
+  font-size:12px;
+  padding:25px;
+}
+
+.back{
+  display:inline-block;
+  margin-top:5px;
+  padding:11px 18px;
+  border-radius:10px;
+  background:#dda83b;
+  color:#111;
+  text-decoration:none;
+  font-weight:800;
+}
+
+/* MOBILE */
+@media(max-width:1150px){
+  .stats{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .filters{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .export{
+    width:100%;
+  }
+}
+
+@media(max-width:650px){
+  .header-inner{
+    align-items:flex-start;
+  }
+
+  .brand h1{
+    font-size:18px;
+  }
+
+  .brand p{
+    font-size:10px;
+  }
+
+  .brand-icon{
+    width:40px;
+    height:40px;
+  }
+
+  .header-actions{
+    flex-direction:column;
+  }
+
+  .hbtn{
+    padding:7px 10px;
+    font-size:11px;
+  }
+
+  .container{
+    padding:20px 12px 40px;
+  }
+
+  .hero-title h2{
+    font-size:22px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat{
+    padding:14px;
+  }
+
+  .stat-value{
+    font-size:22px;
+  }
+
+  .filters{
+    grid-template-columns:1fr;
+  }
+
+  .booking-head{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:5px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+
+    <div class="brand">
+      <div class="brand-icon">🐅</div>
+      <div>
+        <h1>Rajaji Safari</h1>
+        <p>Professional Management Dashboard</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="hbtn" onclick="showBookings()">🔄 Refresh</button>
+      <button class="hbtn logout" onclick="logoutAdmin()">🚪 Logout</button>
+    </div>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero-title">
+    <h2>Safari Booking Dashboard</h2>
+    <p>Manage reservations, payments and visitors from one place.</p>
+  </section>
+
+  <section class="stats">
+
+    <div class="stat">
+      <div class="stat-top">
+        <span>📋</span>
+        <div class="stat-icon">📋</div>
+      </div>
+      <div class="stat-label">Total Bookings</div>
+      <div class="stat-value" id="totalBookings">0</div>
+    </div>
+
+    <div class="stat green">
+      <div class="stat-top">
+        <span>✓</span>
+        <div class="stat-icon">✅</div>
+      </div>
+      <div class="stat-label">Confirmed</div>
+      <div class="stat-value" id="confirmedBookings">0</div>
+    </div>
+
+    <div class="stat orange">
+      <div class="stat-top">
+        <span>⌛</span>
+        <div class="stat-icon">⏳</div>
+      </div>
+      <div class="stat-label">Pending</div>
+      <div class="stat-value" id="pendingBookings">0</div>
+    </div>
+
+    <div class="stat red">
+      <div class="stat-top">
+        <span>×</span>
+        <div class="stat-icon">❌</div>
+      </div>
+      <div class="stat-label">Cancelled</div>
+      <div class="stat-value" id="cancelledBookings">0</div>
+    </div>
+
+    <div class="stat orange">
+      <div class="stat-top">
+        <span>₹</span>
+        <div class="stat-icon">💳</div>
+      </div>
+      <div class="stat-label">Payment Submitted</div>
+      <div class="stat-value" id="paymentSubmitted">0</div>
+    </div>
+
+    <div class="stat gold">
+      <div class="stat-top">
+        <span>₹</span>
+        <div class="stat-icon">💰</div>
+      </div>
+      <div class="stat-label">Total Revenue</div>
+      <div class="stat-value">
+        ₹<span id="totalAmount">0</span>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="panel">
+
+    <div class="panel-head">
+      <h3>🔎 Search & Filter</h3>
+      <p>Find bookings by visitor, date or payment status.</p>
+    </div>
+
+    <div class="filters">
+
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search name, phone or Booking ID..."
+        oninput="showBookings()">
+
+      <input
+        id="dateFilter"
+        type="date"
+        onchange="showBookings()">
+
+      <select id="statusFilter" onchange="showBookings()">
+        <option value="All">All Booking Status</option>
+        <option value="Pending">Pending</option>
+        <option value="Confirmed">Confirmed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+
+      <select id="paymentFilter" onchange="showBookings()">
+        <option value="All">All Payment Status</option>
+        <option value="Unpaid">Unpaid</option>
+        <option value="Payment Submitted">Payment Submitted</option>
+        <option value="Paid">Paid</option>
+      </select>
+
+      <button class="export" onclick="exportCSV()">
+        📥 Export CSV
+      </button>
+
+    </div>
+
+  </section>
+
+  <section class="panel">
+
+    <div class="booking-head">
+      <h3>📋 Safari Bookings</h3>
+      <span class="count" id="resultCount">0 bookings</span>
+    </div>
+
+    <div id="bookingContent" class="empty">
+      <div class="empty-icon">📭</div>
+      No bookings found.
+    </div>
+
+  </section>
+
+  <a href="./index.html" class="back">
+    🏠 Back to Website
+  </a>
+
+</main>
+
+<footer>
+  🐅 Rajaji Safari Admin Panel
+  <br>
+  © 2026 Rajaji Safari • All Rights Reserved
+</footer>
+
+<script>
+
+/* =========================================
+   ADMIN LOGIN PROTECTION
+========================================= */
+
+if(
+  sessionStorage.getItem("rajajiAdminLoggedIn") !== "true"
+){
+  window.location.replace("./admin-login.html");
+}
+
+
+/* =========================================
+   GET BOOKINGS
+========================================= */
+
+function getBookings(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("rajajiBookings")
+    ) || [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+/* =========================================
+   SAVE BOOKINGS
+========================================= */
+
+function saveBookings(bookings){
+
+  localStorage.setItem(
+    "rajajiBookings",
+    JSON.stringify(bookings)
+  );
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHTML(value){
+
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+   SHOW BOOKINGS
+========================================= */
+
+function showBookings(){
+
+  const bookings = getBookings();
+
+  document.getElementById("totalBookings").textContent =
+    bookings.length;
+
+
+  const confirmed = bookings.filter(
+    b => b.status === "Confirmed"
+  ).length;
+
+  const cancelled = bookings.filter(
+    b => b.status === "Cancelled"
+  ).length;
+
+  const pending = bookings.filter(
+    b => !b.status || b.status === "Pending"
+  ).length;
+
+  const paymentSubmitted = bookings.filter(
+    b => b.paymentStatus === "Payment Submitted"
+  ).length;
+
+
+  document.getElementById("confirmedBookings").textContent =
+    confirmed;
+
+  document.getElementById("cancelledBookings").textContent =
+    cancelled;
+
+  document.getElementById("pendingBookings").textContent =
+    pending;
+
+  document.getElementById("paymentSubmitted").textContent =
+    paymentSubmitted;
+
+
+  const totalAmount = bookings.reduce(
+    (sum,b) => sum + Number(b.total || 0),
+    0
+  );
+
+  document.getElementById("totalAmount").textContent =
+    totalAmount.toLocaleString("en-IN");
+
+
+  const search =
+    document.getElementById("searchInput")
+    .value.toLowerCase().trim();
+
+  const date =
+    document.getElementById("dateFilter").value;
+
+  const status =
+    document.getElementById("statusFilter").value;
+
+  const payment =
+    document.getElementById("paymentFilter").value;
+
+
+  const filtered = bookings.filter(booking => {
+
+    const text =
+      String(booking.name || "").toLowerCase().includes(search) ||
+      String(booking.phone || "").toLowerCase().includes(search) ||
+      String(booking.bookingId || "").toLowerCase().includes(search);
+
+    const dateMatch =
+      !date || booking.date === date;
+
+    const bookingStatus =
+      booking.status || "Pending";
+
+    const paymentStatus =
+      booking.paymentStatus || "Unpaid";
+
+    const statusMatch =
+      status === "All" ||
+      bookingStatus === status;
+
+    const paymentMatch =
+      payment === "All" ||
+      paymentStatus === payment;
+
+    return (
+      text &&
+      dateMatch &&
+      statusMatch &&
+      paymentMatch
+    );
+
+  });
+
+
+  document.getElementById("resultCount").textContent =
+    filtered.length +
+    (filtered.length === 1 ? " booking" : " bookings");
+
+
+  const content =
+    document.getElementById("bookingContent");
+
+
+  if(filtered.length === 0){
+
+    content.className = "empty";
+
+    content.innerHTML = `
+      <div class="empty-icon">📭</div>
+      No bookings found.
+    `;
+
+    return;
+
+  }
+
+
+  content.className = "table-wrap";
+
+  content.innerHTML = `
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>Booking ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>WhatsApp</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Zone</th>
+          <th>Pickup</th>
+          <th>Safari</th>
+          <th>Visitors</th>
+          <th>Total</th>
+          <th>Booking Status</th>
+          <th>Payment Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        ${filtered.map(booking => {
+
+          const id =
+            escapeHTML(booking.bookingId || "");
+
+          const phone =
+            String(booking.phone || "")
+            .replace(/\D/g,"");
+
+          const statusValue =
+            booking.status || "Pending";
+
+          const paymentValue =
+            booking.paymentStatus || "Unpaid";
+
+
+          return `
+
+            <tr>
+
+              <td>
+                <span class="booking-id">
+                  ${id || "-"}
+                </span>
+              </td>
+
+              <td>
+                ${escapeHTML(booking.name || "-")}
+              </td>
+
+              <td>
+                ${escapeHTML(booking.phone || "-")}
+              </td>
+
+              <td>
+                ${
+                  phone
+                  ?
+                  `<a
+                    class="whatsapp"
+                    target="_blank"
+                    href="https://wa.me/91${phone}?text=${encodeURIComponent(
+                      "Hello " +
+                      (booking.name || "") +
+                      ", regarding your Rajaji Safari booking " +
+                      (booking.bookingId || "") +
+                      "."
+                    )}">
+                    💬 WhatsApp
+                  </a>`
+                  :
+                  "-"
+                }
+              </td>
+
+              <td>
+                ${escapeHTML(booking.date || "-")}
+              </td>
+
+              <td>
+                ${escapeHTML(booking.time || "-")}
+              </td>
+
+              <td>
+                ${escapeHTML(booking.zone || "-")}
+              </td>
+
+              <td>
+                ${escapeHTML(booking.pickup || "-")}
+              </td>
+
+              <td>
+                ${escapeHTML(
+                  booking.safari ||
+                  booking.type ||
+                  "-"
+                )}
+              </td>
+
+              <td>
+                ${escapeHTML(booking.people || "-")}
+              </td>
+
+              <td>
+                <strong>
+                  ₹${Number(
+                    booking.total || 0
+                  ).toLocaleString("en-IN")}
+                </strong>
+              </td>
+
+              <td>
+
+                <select
+                  class="status-select"
+                  onchange="changeBookingStatus(
+                    '${id}',
+                    this.value
+                  )">
+
+                  <option
+                    value="Pending"
+                    ${statusValue==="Pending"?"selected":""}>
+                    Pending
+                  </option>
+
+                  <option
+                    value="Confirmed"
+                    ${statusValue==="Confirmed"?"selected":""}>
+                    Confirmed
+                  </option>
+
+                  <option
+                    value="Cancelled"
+                    ${statusValue==="Cancelled"?"selected":""}>
+                    Cancelled
+                  </option>
+
+                </select>
+
+              </td>
+
+              <td>
+
+                <select
+                  class="payment-select"
+                  onchange="changePaymentStatus(
+                    '${id}',
+                    this.value
+                  )">
+
+                  <option
+                    value="Unpaid"
+                    ${paymentValue==="Unpaid"?"selected":""}>
+                    Unpaid
+                  </option>
+
+                  <option
+                    value="Payment Submitted"
+                    ${paymentValue==="Payment Submitted"?"selected":""}>
+                    Payment Submitted
+                  </option>
+
+                  <option
+                    value="Paid"
+                    ${paymentValue==="Paid"?"selected":""}>
+                    Paid
+                  </option>
+
+                </select>
+
+              </td>
+
+              <td>
+
+                <button
+                  class="delete"
+                  onclick="deleteBooking('${id}')">
+                  🗑️ Delete
+                </button>
+
+              </td>
+
+            </tr>
+
+          `;
+
+        }).join("")}
+
+      </tbody>
+
+    </table>
+
+  `;
+
+}
+
+
+/* =========================================
+   BOOKING STATUS
+========================================= */
+
+function changeBookingStatus(
+  bookingId,
+  newStatus
+){
+
+  const bookings = getBookings();
+
+  const booking = bookings.find(
+    b => String(b.bookingId) === String(bookingId)
+  );
+
+  if(!booking) return;
+
+  booking.status = newStatus;
+
+  saveBookings(bookings);
+
+  updateCurrentBooking(
+    booking,
+    newStatus,
+    booking.paymentStatus
+  );
+
+  showBookings();
+
+}
+
+
+/* =========================================
+   PAYMENT STATUS
+========================================= */
+
+function changePaymentStatus(
+  bookingId,
+  newStatus
+){
+
+  const bookings = getBookings();
+
+  const booking = bookings.find(
+    b => String(b.bookingId) === String(bookingId)
+  );
+
+  if(!booking) return;
+
+ 

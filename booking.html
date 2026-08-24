@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Book Rajaji Safari online. Choose your zone, date, safari timing and visitors.">
+
+<meta name="theme-color" content="#071d11">
+
+<title>Book Safari | Rajaji Safari</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f3f6f2;
+  color:#18231c;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,27,15,.94);
+  backdrop-filter:blur(15px);
+  color:white;
+  padding:14px 5%;
+  box-shadow:0 5px 25px rgba(0,0,0,.2);
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#f3c653;
+}
+
+.home{
+  color:white;
+  text-decoration:none;
+  padding:9px 14px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:9px;
+  font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:360px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  color:white;
+  padding:60px 20px 100px;
+
+  background:
+  linear-gradient(rgba(2,20,10,.55),rgba(2,24,12,.94)),
+  url("https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=2200&q=90")
+  center/cover;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:30px;
+  background:rgba(255,255,255,.1);
+  font-size:11px;
+  margin-bottom:18px;
+}
+
+.hero h1{
+  font-size:clamp(38px,7vw,65px);
+  line-height:1;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
+  color:#f3c653;
+}
+
+.hero p{
+  color:#dce8df;
+  font-size:14px;
+}
+
+/* MAIN */
+
+.container{
+  max-width:1000px;
+  margin:-55px auto 60px;
+  padding:0 15px;
+  position:relative;
+}
+
+.card{
+  background:white;
+  border-radius:25px;
+  padding:30px;
+  box-shadow:0 25px 70px rgba(0,0,0,.18);
+}
+
+/* PROGRESS */
+
+.progress{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:30px;
+}
+
+.progress div{
+  padding:11px;
+  text-align:center;
+  background:#edf2ed;
+  border-radius:9px;
+  color:#788178;
+  font-size:10px;
+  font-weight:bold;
+}
+
+.progress .active{
+  background:#176b3a;
+  color:white;
+}
+
+/* SECTION */
+
+.section{
+  margin-top:30px;
+}
+
+.section h2{
+  color:#18542f;
+  font-size:21px;
+  margin-bottom:5px;
+}
+
+.section p{
+  color:#747c76;
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+/* FORM */
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+
+.field{
+  margin-bottom:16px;
+}
+
+label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  color:#344239;
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+  padding:14px;
+  border:1px solid #d7ded8;
+  border-radius:11px;
+  background:#fafcfb;
+  font-size:14px;
+}
+
+input:focus,
+select:focus{
+  outline:none;
+  border-color:#176b3a;
+  box-shadow:0 0 0 3px rgba(23,107,58,.1);
+}
+
+/* TIME */
+
+.time-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.time{
+  padding:17px;
+  border:2px solid #e0e6e1;
+  border-radius:14px;
+  cursor:pointer;
+}
+
+.time:has(input:checked){
+  border-color:#176b3a;
+  background:#eff8f1;
+}
+
+.time input{
+  width:auto;
+  margin-right:5px;
+}
+
+.time strong{
+  display:block;
+  margin-top:8px;
+  color:#205b35;
+}
+
+.time small{
+  color:#777;
+}
+
+/* ZONES */
+
+.zones{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:9px;
+}
+
+.zone{
+  padding:15px 9px;
+  text-align:center;
+  border:1px solid #dce3dd;
+  border-radius:12px;
+  background:#fafcf9;
+  cursor:pointer;
+}
+
+.zone:hover{
+  border-color:#176b3a;
+  transform:translateY(-2px);
+}
+
+.zone strong{
+  display:block;
+  color:#205b35;
+  font-size:12px;
+}
+
+.zone small{
+  color:#777;
+  font-size:9px;
+}
+
+/* PRICE */
+
+.price{
+  margin-top:28px;
+  padding:22px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#edf8ef,#fff8e3);
+  border:1px solid #d9e4da;
+}
+
+.price h3{
+  color:#185b34;
+  margin-bottom:12px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:13px;
+  color:#59645d;
+}
+
+.total{
+  display:flex;
+  justify-content:space-between;
+  border-top:1px solid #d5ded6;
+  margin-top:10px;
+  padding-top:15px;
+  font-weight:bold;
+}
+
+.total strong{
+  color:#176b3a;
+  font-size:27px;
+}
+
+/* BUTTON */
+
+.book{
+  width:100%;
+  border:0;
+  padding:17px;
+  margin-top:22px;
+  border-radius:13px;
+  background:linear-gradient(135deg,#dda83b,#f4ce6b);
+  color:#172219;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.book:hover{
+  transform:translateY(-2px);
+}
+
+/* CONFIRMATION */
+
+.confirmation{
+  display:none;
+  margin-top:22px;
+  padding:22px;
+  border-radius:18px;
+  background:#edf9ef;
+  border:1px solid #b9ddc0;
+}
+
+.confirmation h3{
+  color:#176334;
+  margin-bottom:12px;
+}
+
+.confirmation p{
+  margin:7px 0;
+  color:#455148;
+  font-size:13px;
+}
+
+.pay{
+  display:block;
+  text-align:center;
+  padding:14px;
+  margin-top:14px;
+  border-radius:11px;
+  background:#176b3a;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.whatsapp{
+  background:#25d366;
+}
+
+/* FOOTER */
+
+footer{
+  background:#081d11;
+  color:white;
+  text-align:center;
+  padding:35px 15px;
+}
+
+footer p{
+  color:#b9cabe;
+  font-size:12px;
+  margin-top:7px;
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .zones{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .card{
+    padding:20px 15px;
+    border-radius:20px;
+  }
+
+  .time-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    min-height:330px;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .zones{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+🐅 Rajaji <span>Safari</span>
+</div>
+
+<a href="./index.html" class="home">
+← Home
+</a>
+
+</div>
+
+</header>
+
+<section class="hero">
+
+<div>
+
+<div class="badge">
+🌿 RAJAJI NATIONAL PARK • UTTARAKHAND
+</div>
+
+<h1>
+Book Your <span>Safari</span>
+</h1>
+
+<p>
+Reserve your wildlife adventure in a few simple steps.
+</p>
+
+</div>
+
+</section>
+
+<main class="container">
+
+<div class="card">
+
+<div class="progress">
+
+<div class="active">1. DETAILS</div>
+<div>2. PAYMENT</div>
+<div>3. CONFIRMATION</div>
+
+</div>
+
+<!-- VISITOR -->
+
+<section class="section">
+
+<h2>👤 Visitor Details</h2>
+
+<p>Enter the main visitor information.</p>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Full Name *</label>
+
+<input
+id="name"
+type="text"
+placeholder="Enter full name">
+
+</div>
+
+<div class="field">
+
+<label>Mobile Number *</label>
+
+<input
+id="phone"
+type="tel"
+maxlength="10"
+inputmode="numeric"
+placeholder="10 digit mobile number">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DATE -->
+
+<section class="section">
+
+<h2>📅 Safari Schedule</h2>
+
+<p>Select your date and number of visitors.</p>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Safari Date *</label>
+
+<input id="date" type="date">
+
+</div>
+
+<div class="field">
+
+<label>Visitors *</label>
+
+<input
+id="people"
+type="number"
+min="1"
+max="20"
+value="1"
+placeholder="Number of visitors">
+
+</div>
+
+</div>
+
+<label>Safari Timing *</label>
+
+<div class="time-grid">
+
+<label class="time">
+
+<input
+type="radio"
+name="time"
+value="Morning Safari">
+
+🌅 Morning
+
+<strong>Morning Safari</strong>
+
+<small>Peaceful forest experience</small>
+
+</label>
+
+<label class="time">
+
+<input
+type="radio"
+name="time"
+value="Evening Safari">
+
+🌄 Evening
+
+<strong>Evening Safari</strong>
+
+<small>Explore the forest at sunset</small>
+
+</label>
+
+</div>
+
+</section>
+
+<!-- ZONE -->
+
+<section class="section">
+
+<h2>🗺️ Safari Zone</h2>
+
+<p>Choose your preferred Rajaji safari zone.</p>
+
+<div class="field">
+
+<label>Safari Zone *</label>
+
+<select id="zone">
+
+<option value="">Select Safari Zone</option>
+
+<option>Chilla Zone</option>
+<option>Mohand Zone</option>
+<option>Motichur Zone</option>
+<option>Ranipur Zone</option>
+<option>Jhilmil Jheel Zone</option>
+
+</select>
+
+</div>
+
+<div class="zones">
+
+<div class="zone">
+<strong>🌿 Chilla</strong>
+<small>Forest & river</small>
+</div>
+
+<div class="zone">
+<strong>🌲 Mohand</strong>
+<small>Dense forest</small>
+</div>
+
+<div class="zone">
+<strong>🐘 Motichur</strong>
+<small>Wildlife habitat</small>
+</div>
+
+<div class="zone">
+<strong>🌳 Ranipur</strong>
+<small>Wild surroundings</small>
+</div>
+
+<div class="zone">
+<strong>💧 Jhilmil</strong>
+<small>Wetland habitat</small>
+</div>
+
+</div>
+
+</section>
+
+<!-- OPTIONS -->
+
+<section class="section">
+
+<h2>🚙 Safari Options</h2>
+
+<p>Select pickup and safari type.</p>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Pickup Point *</label>
+
+<select id="pickup">
+
+<option value="">Select Pickup</option>
+
+<option>Haridwar</option>
+<option>Rishikesh</option>
+<option>Rajaji Safari Gate</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Safari Type *</label>
+
+<select id="safari">
+
+<option value="">Select Safari Type</option>
+
+<option>Jeep Safari</option>
+
+</select>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICE -->
+
+<section class="price">
+
+<h3>💰 Fare Summary</h3>
+
+<div class="row">
+<span>Jeep Charge</span>
+<strong>₹3,000</strong>
+</div>
+
+<div class="row">
+<span>Jeep Entry</span>
+<strong>₹300</strong>
+</div>
+
+<div class="row">
+<span>Permit</span>
+<strong>₹150 × <span id="count">1</span></strong>
+</div>
+
+<div class="total">
+
+<span>Total Amount</span>
+
+<strong>
+₹<span id="total">3,450</span>
+</strong>
+
+</div>
+
+</section>
+
+<button
+class="book"
+id="submit">
+
+🎫 Continue to Payment
+
+</button>
+
+<div
+class="confirmation"
+id="confirmation">
+
+<h3>✅ Booking Created Successfully</h3>
+
+<div id="details"></div>
+
+<a
+id="payment"
+class="pay"
+target="_blank">
+💳 Pay Securely with UPI
+</a>
+
+<a
+id="whatsapp"
+class="pay whatsapp"
+target="_blank">
+📲 Send Booking on WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<strong>🐅 Rajaji Safari</strong>
+
+<p>
+Explore the wild • Experience nature • Create memories
+</p>
+
+<p>
+© 2026 Rajaji Safari. All Rights Reserved.
+</p>
+
+</footer>
+
+<script>
+
+/* ============================
+   CONFIGURATION
+============================ */
+
+const WHATSAPP = "916395136746";
+
+/* YAHAN APNI UPI ID RAKHO */
+const UPI_ID = "YOUR_UPI_ID";
+  kapilsaini3712okhdfcbank
+
+const JEEP = 3000;
+const ENTRY = 300;
+const PERMIT = 150;
+
+
+/* ============================
+   ELEMENTS
+============================ */
+
+const people =
+document.getElementById("people");
+
+const count =
+document.getElementById("count");
+
+const total =
+document.getElementById("total");
+
+
+/* ============================
+   PRICE CALCULATOR
+============================ */
+
+function calculate(){
+
+let visitors =
+parseInt(people.value) || 1;
+
+if(visitors < 1){
+visitors = 1;
+people.value = 1;
+}
+
+if(visitors > 20){
+visitors = 20;
+people.value = 20;
+}
+
+let amount =
+JEEP + ENTRY + (PERMIT * visitors);
+
+count.textContent = visitors;
+
+total.textContent =
+amount.toLocaleString("en-IN");
+
+}
+
+people.addEventListener(
+"input",
+calculate
+);
+
+calculate();
+
+
+/* ============================
+   MINIMUM DATE
+============================ */
+
+const date =
+document.getElementById("date");
+
+const today =
+new Date();
+
+const yyyy =
+today.getFullYear();
+
+const mm =
+String(today.getMonth()+1)
+.padStart(2,"0");
+
+const dd =
+String(today.getDate())
+.padStart(2,"0");
+
+date.min =
+`${yyyy}-${mm}-${dd}`;
+
+
+/* ============================
+   BOOKING
+============================ */
+
+document
+.getElementById("submit")
+.addEventListener("click",function(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const phone =
+document.getElementById("phone").value.trim();
+
+const safariDate =
+document.getElementById("date").value;
+
+const visitors =
+parseInt(document.getElementById("people").value);
+
+const zone =
+document.getElementById("zone").value;
+
+const pickup =
+document.getElementById("pickup").value;
+
+const safari =
+document.getElementById("safari").value;
+
+const timeElement =
+document.querySelector(
+'input[name="time"]:checked'
+);
+
+const time =
+timeElement ?
+timeElement.value :
+"";
+
+
+/* VALIDATION */
+
+if(!name ||
+!phone ||
+phone.length !== 10 ||
+!safariDate ||
+!visitors ||
+!time ||
+!zone ||
+!pickup ||
+!safari){
+
+alert(
+"Please complete all required details."
+);
+
+return;
+
+}
+
+
+/* PRICE */
+
+const amount =
+JEEP +
+ENTRY +
+(PERMIT * visitors);
+
+
+/* BOOKING ID */
+
+const bookingId =
+"RS" +
+Date.now().toString().slice(-8);
+
+
+/* BOOKING OBJECT */
+
+const booking = {
+
+bookingId,
+name,
+phone,
+date:safariDate,
+visitors,
+time,
+zone,
+pickup,
+safari,
+amount,
+createdAt:
+new Date().toISOString()
+
+};
+
+
+/* SAVE */
+
+let bookings =
+JSON.parse(
+localStorage.getItem("rajajiBookings")
+) || [];
+
+bookings.push(booking);
+
+localStorage.setItem(
+"rajajiBookings",
+JSON.stringify(bookings)
+);
+
+
+/* DETAILS */
+
+document
+.getElementById("details")
+.innerHTML = `
+
+<p>
+<strong>Booking ID:</strong>
+${bookingId}
+</p>
+
+<p>
+<strong>Name:</strong>
+${name}
+</p>
+
+<p>
+<strong>Mobile:</strong>
+${phone}
+</p>
+
+<p>
+<strong>Date:</strong>
+${safariDate}
+</p>
+
+<p>
+<strong>Safari:</strong>
+${safari}
+</p>
+
+<p>
+<strong>Timing:</strong>
+${time}
+</p>
+
+<p>
+<strong>Zone:</strong>
+${zone}
+</p>
+
+<p>
+<strong>Visitors:</strong>
+${visitors}
+</p>
+
+<p>
+<strong>Total:</strong>
+₹${amount.toLocaleString("en-IN")}
+</p>
+
+`;
+
+
+/* UPI */
+
+const upiLink =
+"upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent("Rajaji Safari") +
+"&am=" +
+amount +
+"&cu=INR" +
+"&tn=" +
+encodeURIComponent(
+"Rajaji Safari " + bookingId
+);
+
+document
+.getElementById("payment")
+.href =
+upiLink;
+
+
+/* WHATSAPP */
+
+const message =
+
+`🐅 RAJAJI SAFARI BOOKING
+
+Booking ID: ${bookingId}
+
+Name: ${name}
+Mobile: ${phone}
+
+Date: ${safariDate}
+Visitors: ${visitors}
+Time: ${time}
+
+Zone: ${zone}
+Pickup: ${pickup}
+Safari: ${safari}
+
+Total Amount: ₹${amount}
+
+Please confirm my safari booking.`;
+
+const whatsappLink =
+"https://wa.me/" +
+WHATSAPP +
+"?text=" +
+encodeURIComponent(message);
+
+document
+.getElementById("whatsapp")
+.href =
+whatsappLink;
+
+
+/* SHOW */
+
+document
+.getElementById("confirmation")
+.style.display =
+"block";
+
+
+document
+.getElementById("confirmation")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+});
+
+
+/* ============================
+   ZONE QUICK SELECT
+============================ */
+
+document
+.querySelectorAll(".zone")
+.forEach(function(card){
+
+card.addEventListener("click",function(){
+
+const text =
+card.querySelector("strong")
+.textContent
+.replace("🌿","")
+.replace("🌲","")
+.replace("🐘","")
+.replace("🌳","")
+.replace("💧","")
+.trim();
+
+const select =
+document.getElementById("zone");
+
+for(let option of select.options){
+
+if(option.textContent
+.includes(text)){
+
+select.value =
+option.value;
+
+break;
+
+}
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

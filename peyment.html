@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="Rajaji Safari Admin Dashboard">
+
+<title>Admin Dashboard | Rajaji Safari</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f3f7f3;
+  color:#172219;
+}
+
+/* HEADER */
+
+header{
+  background:linear-gradient(135deg,#082615,#176b3a);
+  color:white;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:bold;
+}
+
+.logout{
+  border:0;
+  background:#e4ad3f;
+  color:#172219;
+  padding:10px 15px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* MAIN */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:25px 15px 50px;
+}
+
+.title{
+  margin-bottom:22px;
+}
+
+.title h1{
+  font-size:30px;
+  color:#176b3a;
+}
+
+.title p{
+  color:#6d776f;
+  margin-top:5px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  border:1px solid #e2e9e2;
+}
+
+.stat-icon{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+.stat strong{
+  display:block;
+  font-size:27px;
+  color:#176b3a;
+}
+
+.stat span{
+  color:#707970;
+  font-size:13px;
+}
+
+/* PANEL */
+
+.panel{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:0 6px 25px rgba(0,0,0,.07);
+  overflow:hidden;
+}
+
+.panel-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin-bottom:18px;
+}
+
+.panel-header h2{
+  color:#176b3a;
+}
+
+.refresh{
+  border:0;
+  background:#176b3a;
+  color:white;
+  padding:10px 14px;
+  border-radius:9px;
+  cursor:pointer;
+}
+
+/* SEARCH */
+
+.search{
+  width:100%;
+  padding:13px;
+  border:1px solid #d6dfd6;
+  border-radius:10px;
+  margin-bottom:18px;
+  font-size:14px;
+}
+
+.search:focus{
+  outline:none;
+  border-color:#176b3a;
+}
+
+/* TABLE */
+
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  min-width:900px;
+  border-collapse:collapse;
+}
+
+th{
+  background:#edf5ed;
+  color:#245b38;
+  padding:13px 10px;
+  text-align:left;
+  font-size:13px;
+}
+
+td{
+  padding:13px 10px;
+  border-bottom:1px solid #e8ece8;
+  font-size:13px;
+}
+
+tr:hover td{
+  background:#fafcf9;
+}
+
+/* BADGES */
+
+.badge{
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.pending{
+  background:#fff3cd;
+  color:#806415;
+}
+
+.paid{
+  background:#dff5e5;
+  color:#176b35;
+}
+
+.confirmed{
+  background:#d8f0ff;
+  color:#07547a;
+}
+
+.rejected{
+  background:#ffe1e1;
+  color:#9b2020;
+}
+
+/* BUTTONS */
+
+.actions{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.action-btn{
+  border:0;
+  padding:7px 9px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.confirm-btn{
+  background:#176b3a;
+  color:white;
+}
+
+.reject-btn{
+  background:#e74c3c;
+  color:white;
+}
+
+.delete-btn{
+  background:#333;
+  color:white;
+}
+
+.whatsapp-btn{
+  background:#25d366;
+  color:white;
+}
+
+/* EMPTY */
+
+.empty{
+  text-align:center;
+  padding:45px 15px;
+  color:#777;
+}
+
+.empty-icon{
+  font-size:45px;
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+  font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .title h1{
+    font-size:25px;
+  }
+
+}
+
+@media(max-width:500px){
+
+  header{
+    padding:14px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .logout{
+    padding:8px 10px;
+    font-size:12px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .stat{
+    padding:15px;
+  }
+
+  .stat strong{
+    font-size:23px;
+  }
+
+  .panel{
+    padding:15px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    🐅 Rajaji Safari Admin
+  </div>
+
+  <button class="logout" onclick="logout()">
+    Logout
+  </button>
+
+</header>
+
+
+<main class="container">
+
+  <div class="title">
+
+    <h1>
+      📊 Dashboard
+    </h1>
+
+    <p>
+      Manage safari bookings and payment verification.
+    </p>
+
+  </div>
+
+
+  <!-- STATISTICS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <div class="stat-icon">
+        🎫
+      </div>
+
+      <strong id="totalBookings">
+        0
+      </strong>
+
+      <span>
+        Total Bookings
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-icon">
+        ⏳
+      </div>
+
+      <strong id="pendingBookings">
+        0
+      </strong>
+
+      <span>
+        Pending
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-icon">
+        💳
+      </div>
+
+      <strong id="paidBookings">
+        0
+      </strong>
+
+      <span>
+        Payment Submitted
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-icon">
+        💰
+      </div>
+
+      <strong>
+        ₹<span id="totalRevenue">0</span>
+      </strong>
+
+      <span>
+        Total Booking Value
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOOKINGS -->
+
+  <div class="panel">
+
+    <div class="panel-header">
+
+      <h2>
+        📋 Safari Bookings
+      </h2>
+
+      <button
+        class="refresh"
+        onclick="showBookings()">
+
+        🔄 Refresh
+
+      </button>
+
+    </div>
+
+
+    <input
+      type="text"
+      id="search"
+      class="search"
+      placeholder="🔎 Search by name, phone or booking ID..."
+      oninput="showBookings()">
+
+
+    <div id="bookingArea"></div>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  🐅 Rajaji Safari Admin Panel
+  <br>
+  © 2026 Rajaji Safari
+
+</footer>
+
+
+<script>
+
+/* ================================
+   LOAD BOOKINGS
+================================ */
+
+function getBookings(){
+
+  return JSON.parse(
+    localStorage.getItem("rajajiBookings")
+  ) || [];
+
+}
+
+
+/* ================================
+   DASHBOARD
+================================ */
+
+function updateStats(bookings){
+
+  document.getElementById(
+    "totalBookings"
+  ).textContent = bookings.length;
+
+
+  const pending =
+    bookings.filter(
+      booking =>
+      booking.status === "Pending"
+    ).length;
+
+
+  const paid =
+    bookings.filter(
+      booking =>
+      booking.paymentStatus ===
+      "Payment Submitted"
+    ).length;
+
+
+  const revenue =
+    bookings.reduce(
+      (sum,booking) =>
+      sum + Number(booking.total || 0),
+      0
+    );
+
+
+  document.getElementById(
+    "pendingBookings"
+  ).textContent = pending;
+
+
+  document.getElementById(
+    "paidBookings"
+  ).textContent = paid;
+
+
+  document.getElementById(
+    "totalRevenue"
+  ).textContent =
+  revenue.toLocaleString("en-IN");
+
+}
+
+
+/* ================================
+   SHOW BOOKINGS
+================================ */
+
+function showBookings(){
+
+  const bookings = getBookings();
+
+  updateStats(bookings);
+
+
+  const search =
+    document.getElementById(
+      "search"
+    ).value
+    .toLowerCase()
+    .trim();
+
+
+  const filtered =
+    bookings.filter(
+      booking =>
+
+      String(
+        booking.name || ""
+      )
+      .toLowerCase()
+      .includes(search)
+
+      ||
+
+      String(
+        booking.phone || ""
+      )
+      .includes(search)
+
+      ||
+
+      String(
+        booking.bookingId || ""
+      )
+      .toLowerCase()
+      .includes(search)
+
+    );
+
+
+  const area =
+    document.getElementById(
+      "bookingArea"
+    );
+
+
+  if(filtered.length === 0){
+
+    area.innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          📭
+        </div>
+
+        <h3>
+          No bookings found
+        </h3>
+
+        <p>
+          New safari bookings will appear here.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  let html = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Booking ID</th>
+
+            <th>Customer</th>
+
+            <th>Date</th>
+
+            <th>Zone</th>
+
+            <th>Visitors</th>
+
+            <th>Total</th>
+
+            <th>Payment</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+  `;
+
+
+  filtered.forEach(
+    booking => {
+
+      const realIndex =
+        bookings.findIndex(
+          item =>
+          item.bookingId ===
+          booking.bookingId
+        );
+
+
+      let paymentClass =
+        booking.paymentStatus ===
+        "Payment Submitted"
+        ? "paid"
+        : "pending";
+
+
+      let statusClass =
+        "pending";
+
+
+      if(
+        booking.status ===
+        "Confirmed"
+      ){
+
+        statusClass =
+        "confirmed";
+
+      }
+
+
+      if(
+        booking.status ===
+        "Rejected"
+      ){
+
+        statusClass =
+        "rejected";
+
+      }
+
+
+      html += `
+
+        <tr>
+
+          <td>
+            <strong>
+              ${booking.bookingId || "-"}
+            </strong>
+          </td>
+
+          <td>
+            <strong>
+              ${booking.name || "-"}
+            </strong>
+            <br>
+            ${booking.phone || "-"}
+          </td>
+
+          <td>
+            ${booking.date || "-"}
+            <br>
+            ${booking.time || ""}
+          </td>
+
+          <td>
+            ${booking.zone || "-"}
+          </td>
+
+          <td>
+            ${booking.people || "-"}
+          </td>
+
+          <td>
+            ₹${Number(
+              booking.total || 0
+            ).toLocaleString("en-IN")}
+          </td>
+
+          <td>
+
+            <span class="badge ${paymentClass}">
+              ${booking.paymentStatus || "Unpaid"}
+            </span>
+
+          </td>
+
+          <td>
+
+            <span class="badge ${statusClass}">
+              ${booking.status || "Pending"}
+            </span>
+
+          </td>
+
+          <td>
+
+            <div class="actions">
+
+              <button
+                class="action-btn confirm-btn"
+                onclick="confirmBooking(${realIndex})">
+
+                ✓ Confirm
+
+              </button>
+
+
+              <button
+                class="action-btn reject-btn"
+                onclick="rejectBooking(${realIndex})">
+
+                ✕ Reject
+
+              </button>
+
+
+              <button
+                class="action-btn whatsapp-btn"
+                onclick="sendWhatsApp(${realIndex})">
+
+                WhatsApp
+
+              </button>
+
+
+              <button
+                class="action-btn delete-btn"
+                onclick="deleteBooking(${realIndex})">
+
+                Delete
+
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+      `;
+
+    }
+  );
+
+
+  html += `
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  `;
+
+
+  area.innerHTML = html;
+
+}
+
+
+/* ================================
+   CONFIRM
+================================ */
+
+function confirmBooking(index){
+
+  const bookings =
+    getBookings();
+
+
+  if(!bookings[index]){
+    return;
+  }
+
+
+  bookings[index].status =
+    "Confirmed";
+
+
+  bookings[index].paymentStatus =
+    "Payment Verified";
+
+
+  localStorage.setItem(
+    "rajajiBookings",
+    JSON.stringify(bookings)
+  );
+
+
+  const current =
+    JSON.parse(
+      localStorage.getItem(
+        "currentBooking"
+      )
+    );
+
+
+  if(
+    current &&
+    current.bookingId ===
+    bookings[index].bookingId
+  ){
+
+    current.status =
+      "Confirmed";
+
+    current.paymentStatus =
+      "Payment Verified";
+
+
+    localStorage.setItem(
+      "currentBooking",
+      JSON.stringify(current)
+    );
+
+  }
+
+
+  alert(
+    "Booking confirmed successfully!"
+  );
+
+
+  showBookings();
+
+}
+
+
+/* ================================
+   REJECT
+================================ */
+
+function rejectBooking(index){
+
+  const bookings =
+    getBookings();
+
+
+  if(!bookings[index]){
+    return;
+  }
+
+
+  const ok =
+    confirm(
+      "Are you sure you want to reject this booking?"
+    );
+
+
+  if(!ok){
+    return;
+  }
+
+
+  bookings[index].status =
+    "Rejected";
+
+
+  localStorage.setItem(
+    "rajajiBookings",
+    JSON.stringify(bookings)
+  );
+
+
+  alert(
+    "Booking rejected."
+  );
+
+
+  showBookings();
+
+}
+
+
+/* ================================
+   DELETE
+================================ */
+
+function deleteBooking(index){
+
+  const bookings =
+    getBookings();
+
+
+  if(!bookings[index]){
+    return;
+  }
+
+
+  const ok =
+    confirm(
+      "Delete this booking permanently?"
+    );
+
+
+  if(!ok){
+    return;
+  }
+
+
+  bookings.splice(
+    index,
+    1
+  );
+
+
+  localStorage.setItem(
+    "rajajiBookings",
+    JSON.stringify(bookings)
+  );
+
+
+  showBookings();
+
+}
+
+
+/* ================================
+   WHATSAPP
+================================ */
+
+function sendWhatsApp(index){
+
+  const bookings =
+    getBookings();
+
+
+  const booking =
+    bookings[index];
+
+
+  if(!booking){
+    return;
+  }
+
+
+  const message =
+    "🐅 Rajaji Safari Booking%0A%0A" +
+
+    "Booking ID: " +
+    booking.bookingId +
+    "%0A" +
+
+    "Name: " +
+    booking.name +
+    "%0A" +
+
+    "Date: " +
+    booking.date +
+    "%0A" +
+
+    "Time: " +
+    booking.time +
+    "%0A" +
+
+    "Zone: " +
+    booking.zone +
+    "%0A" +
+
+    "Visitors: " +
+    booking.people +
+    "%0A" +
+
+    "Total: ₹" +
+    booking.total +
+    "%0A%0A" +
+
+    "Status: " +
+    booking.status;
+
+
+  window.open(
+    "https://wa.me/91" +
+    booking.phone +
+    "?text=" +
+    message,
+    "_blank"
+  );
+
+}
+
+
+/* ================================
+   LOGOUT
+================================ */
+
+function logout(){
+
+  window.location.href =
+    "admin.html";
+
+}
+
+
+/* ================================
+   START
+================================ */
+
+showBookings();
+
+</script>
+
+</body>
+</html>

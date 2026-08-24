@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Payment | Rajaji Safari</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:
+    linear-gradient(rgba(8,35,20,.88),rgba(8,35,20,.94)),
+    linear-gradient(135deg,#1d6b3b,#d8a33e);
+  padding:25px 15px;
+}
+
+.payment-container{
+  width:100%;
+  max-width:540px;
+  margin:20px auto;
+  background:white;
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 20px 55px rgba(0,0,0,.3);
+}
+
+.logo{
+  text-align:center;
+  font-size:29px;
+  font-weight:bold;
+  color:#176b3a;
+}
+
+.subtitle{
+  text-align:center;
+  color:#777;
+  margin:7px 0 25px;
+}
+
+.summary{
+  background:#f5f8f5;
+  border-radius:17px;
+  padding:18px;
+  margin-bottom:20px;
+}
+
+.summary h3{
+  color:#176b3a;
+  margin-bottom:12px;
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:10px 0;
+  border-bottom:1px solid #dfe5df;
+  font-size:14px;
+}
+
+.row:last-child{
+  border-bottom:none;
+}
+
+.row span{
+  color:#707870;
+}
+
+.row strong{
+  text-align:right;
+  word-break:break-word;
+}
+
+.total{
+  margin-top:5px;
+  padding-top:15px;
+  font-size:19px;
+}
+
+.total strong{
+  color:#176b3a;
+  font-size:23px;
+}
+
+.payment-box{
+  text-align:center;
+  border:2px dashed #176b3a;
+  border-radius:17px;
+  padding:20px;
+}
+
+.payment-box h3{
+  margin-bottom:8px;
+  color:#176b3a;
+}
+
+.payment-box p{
+  color:#666;
+  font-size:14px;
+}
+
+.upi{
+  margin:17px 0;
+  padding:12px;
+  background:#f3f7f3;
+  border-radius:10px;
+  color:#176b3a;
+  font-size:17px;
+  font-weight:bold;
+  word-break:break-all;
+}
+
+.pay-btn,
+.paid-btn{
+  width:100%;
+  border:none;
+  padding:15px;
+  border-radius:12px;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.pay-btn{
+  background:#176b3a;
+}
+
+.paid-btn{
+  background:#25a55b;
+  margin-top:11px;
+}
+
+.pay-btn:hover,
+.paid-btn:hover{
+  opacity:.9;
+}
+
+.status{
+  margin-top:15px;
+  padding:12px;
+  border-radius:10px;
+  background:#fff7df;
+  color:#805f1c;
+  font-size:13px;
+  line-height:1.5;
+}
+
+.note{
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:18px;
+}
+
+.back{
+  display:block;
+  text-align:center;
+  margin-top:18px;
+  color:#176b3a;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+@media(max-width:450px){
+
+  .payment-container{
+    padding:20px 16px;
+  }
+
+  .row{
+    font-size:13px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="payment-container">
+
+  <div class="logo">
+    🐅 Rajaji Safari
+  </div>
+
+  <div class="subtitle">
+    Secure Safari Booking Payment
+  </div>
+
+
+  <div class="summary">
+
+    <h3>
+      🎫 Booking Summary
+    </h3>
+
+
+    <div class="row">
+      <span>Booking ID</span>
+      <strong id="bookingId">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Name</span>
+      <strong id="name">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Phone</span>
+      <strong id="phone">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Date</span>
+      <strong id="date">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Time</span>
+      <strong id="time">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Zone</span>
+      <strong id="zone">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Visitors</span>
+      <strong id="people">-</strong>
+    </div>
+
+
+    <div class="row">
+      <span>Safari Type</span>
+      <strong id="safari">-</strong>
+    </div>
+
+
+    <div class="row total">
+
+      <span>Total Amount</span>
+
+      <strong>
+        ₹<span id="total">0</span>
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="payment-box">
+
+    <h3>
+      💳 Pay via UPI
+    </h3>
+
+    <p>
+      Click Pay Now to open your UPI application.
+    </p>
+
+
+    <!-- APNA REAL UPI ID YAHAN LAGANA HAI -->
+
+    <div
+      class="upi"
+      id="upiText">
+
+      YOUR-UPI-ID@upi
+
+    </div>
+
+
+    <button
+      class="pay-btn"
+      onclick="payNow()">
+
+      💳 Pay Now
+
+    </button>
+
+
+    <button
+      class="paid-btn"
+      onclick="paymentSubmitted()">
+
+      ✅ I Have Completed Payment
+
+    </button>
+
+
+    <div class="status">
+
+      ⚠️ Payment complete karne ke baad hi
+      "I Have Completed Payment" button dabayein.
+      Payment verification admin dashboard se ki jayegi.
+
+    </div>
+
+  </div>
+
+
+  <div class="note">
+
+    Payment ke baad transaction screenshot safe rakhein.
+    Booking confirmation admin verification ke baad complete hogi.
+
+  </div>
+
+
+  <a
+    href="booking.html"
+    class="back">
+
+    ← Back to Booking
+
+  </a>
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   LOAD CURRENT BOOKING
+===================================== */
+
+let booking =
+  JSON.parse(
+    localStorage.getItem("currentBooking")
+  );
+
+
+/* =====================================
+   CHECK BOOKING
+===================================== */
+
+if(!booking){
+
+  alert(
+    "No booking information found."
+  );
+
+  window.location.href =
+    "booking.html";
+
+}
+
+
+/* =====================================
+   DISPLAY BOOKING
+===================================== */
+
+if(booking){
+
+  document.getElementById(
+    "bookingId"
+  ).textContent =
+    booking.bookingId || "-";
+
+
+  document.getElementById(
+    "name"
+  ).textContent =
+    booking.name || "-";
+
+
+  document.getElementById(
+    "phone"
+  ).textContent =
+    booking.phone || "-";
+
+
+  document.getElementById(
+    "date"
+  ).textContent =
+    booking.date || "-";
+
+
+  document.getElementById(
+    "time"
+  ).textContent =
+    booking.time || "-";
+
+
+  document.getElementById(
+    "zone"
+  ).textContent =
+    booking.zone || "-";
+
+
+  document.getElementById(
+    "people"
+  ).textContent =
+    booking.people || "-";
+
+
+  document.getElementById(
+    "safari"
+  ).textContent =
+    booking.safari ||
+    booking.type ||
+    "-";
+
+
+  document.getElementById(
+    "total"
+  ).textContent =
+    Number(
+      booking.total || 0
+    ).toLocaleString("en-IN");
+
+}
+
+
+/* =====================================
+   UPI PAYMENT
+===================================== */
+
+function payNow(){
+
+  if(!booking){
+    return;
+  }
+
+
+  const amount =
+    Number(
+      booking.total || 0
+    );
+
+
+  /*
+    IMPORTANT:
+    YAHAN APNA REAL UPI ID DAALNA HAI.
+    Example:
+    rajajisafari@upi
+  */
+
+  const upiId =
+    "YOUR-UPI-ID@upi";
+
+
+  const merchantName =
+    "Rajaji Safari";
+
+
+  const upiUrl =
+    "upi://pay?pa=" +
+    encodeURIComponent(upiId) +
+
+    "&pn=" +
+    encodeURIComponent(merchantName) +
+
+    "&am=" +
+    encodeURIComponent(amount) +
+
+    "&cu=INR";
+
+
+  window.location.href =
+    upiUrl;
+
+}
+
+
+/* =====================================
+   PAYMENT SUBMITTED
+===================================== */
+
+function paymentSubmitted(){
+
+  if(!booking){
+    return;
+  }
+
+
+  /*
+    PAYMENT STATUS ALAG HAI
+    BOOKING STATUS PENDING RAHEGA
+  */
+
+  booking.paymentStatus =
+    "Payment Submitted";
+
+
+  booking.status =
+    "Pending";
+
+
+  /* SAVE CURRENT BOOKING */
+
+  localStorage.setItem(
+    "currentBooking",
+    JSON.stringify(booking)
+  );
+
+
+  /* =====================================
+     UPDATE BOOKINGS LIST
+  ===================================== */
+
+  const bookings =
+    JSON.parse(
+      localStorage.getItem(
+        "rajajiBookings"
+      )
+    ) || [];
+
+
+  const index =
+    bookings.findIndex(
+      item =>
+        String(item.bookingId) ===
+        String(booking.bookingId)
+    );
+
+
+  if(index !== -1){
+
+    bookings[index].paymentStatus =
+      "Payment Submitted";
+
+
+    bookings[index].status =
+      "Pending";
+
+
+    localStorage.setItem(
+      "rajajiBookings",
+      JSON.stringify(bookings)
+    );
+
+  }
+
+
+  /* =====================================
+     SUCCESS PAGE
+  ===================================== */
+
+  window.location.href =
+    "success.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

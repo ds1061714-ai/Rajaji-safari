@@ -1,0 +1,1120 @@
+/* =====================================================
+   RAJAJI SAFARI
+   PREMIUM COLORFUL + LARGE RESPONSIVE CSS
+   ===================================================== */
+
+:root{
+  --forest:#123c24;
+  --forest-dark:#082415;
+  --forest-light:#247044;
+
+  --gold:#e7b43f;
+  --gold-light:#f8d978;
+
+  --orange:#ed8b32;
+  --blue:#2879c7;
+  --purple:#7351ad;
+
+  --green:#22a95b;
+  --red:#d95445;
+
+  --cream:#fffdf5;
+  --page:#f3f8f2;
+  --white:#fff;
+
+  --text:#17231a;
+  --muted:#68746b;
+  --border:#dfe9e1;
+
+  --shadow:0 10px 30px rgba(15,45,25,.10);
+  --shadow-hover:0 18px 42px rgba(15,45,25,.18);
+
+  --radius:18px;
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  padding:0;
+
+  color:var(--text);
+
+  font-size:16px;
+  line-height:1.7;
+
+  background:
+    linear-gradient(
+      180deg,
+      #effff4 0%,
+      #fffdf3 35%,
+      #eef8ff 70%,
+      #fff8ec 100%
+    );
+
+  -webkit-font-smoothing:antialiased;
+
+  overflow-x:hidden;
+}
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+a{
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+
+::selection{
+  background:var(--gold);
+  color:var(--forest-dark);
+}
+
+
+/* =====================================================
+   TYPOGRAPHY
+   ===================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  margin-top:0;
+  color:var(--forest-dark);
+  line-height:1.25;
+}
+
+p{
+  color:var(--muted);
+  font-size:16px;
+}
+
+section{
+  scroll-margin-top:90px;
+}
+
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.container{
+  width:92% !important;
+  max-width:1250px !important;
+
+  margin-left:auto !important;
+  margin-right:auto !important;
+
+  margin-top:40px;
+  margin-bottom:40px;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:9999;
+
+  background:
+    linear-gradient(
+      90deg,
+      #061c10,
+      #123c24,
+      #17563a
+    ) !important;
+
+  box-shadow:
+    0 5px 20px rgba(0,0,0,.18);
+}
+
+.navbar{
+  min-height:72px;
+}
+
+.logo{
+  font-size:24px;
+  font-weight:900;
+}
+
+.logo span{
+  color:var(--gold-light);
+}
+
+.nav-links a{
+  position:relative;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+}
+
+.nav-links a:hover{
+  color:var(--gold-light) !important;
+}
+
+.nav-links a::after{
+  content:"";
+
+  position:absolute;
+  left:0;
+  bottom:-6px;
+
+  width:0;
+  height:2px;
+
+  background:var(--gold);
+
+  transition:.25s ease;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+.btn,
+button{
+  border:none;
+  cursor:pointer;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.btn{
+  display:inline-block;
+
+  min-height:50px;
+
+  padding:14px 25px;
+
+  font-size:16px;
+  font-weight:700;
+
+  border-radius:10px;
+}
+
+.btn:hover,
+button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 9px 22px rgba(0,0,0,.16);
+}
+
+.btn-primary{
+  background:
+    linear-gradient(
+      135deg,
+      #f6ce58,
+      #df9b21
+    ) !important;
+
+  color:#17301f !important;
+
+  box-shadow:
+    0 7px 20px rgba(228,155,32,.25);
+}
+
+.btn-primary:hover{
+  background:
+    linear-gradient(
+      135deg,
+      #ffe078,
+      #eead36
+    ) !important;
+}
+
+.btn-whatsapp,
+.whatsapp-btn{
+  background:
+    linear-gradient(
+      135deg,
+      #36e97b,
+      #12a953
+    ) !important;
+
+  color:#fff !important;
+
+  box-shadow:
+    0 7px 20px rgba(37,211,102,.23);
+}
+
+
+/* =====================================================
+   SECTION
+   ===================================================== */
+
+section{
+  padding-top:80px !important;
+  padding-bottom:80px !important;
+}
+
+.section-title{
+  margin-bottom:40px;
+}
+
+.section-title h2{
+  font-size:38px !important;
+  margin-bottom:12px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #123c24,
+      #247044,
+      #d99d25
+    );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+}
+
+.section-title p{
+  font-size:17px;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(231,180,63,.15),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(41,145,89,.18),
+      transparent 35%
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+
+.hero h1{
+  font-size:clamp(42px,6vw,72px) !important;
+}
+
+.hero h1 span{
+  color:var(--gold-light);
+}
+
+.hero p{
+  max-width:750px;
+  font-size:20px;
+}
+
+
+/* =====================================================
+   ABOUT
+   ===================================================== */
+
+.about{
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #effcf3
+    ) !important;
+}
+
+.about-image img{
+  width:100%;
+
+  border:5px solid #fff;
+
+  border-radius:16px;
+
+  box-shadow:
+    0 15px 35px rgba(18,60,36,.16);
+}
+
+.about-text h3{
+  font-size:30px;
+  color:var(--forest);
+}
+
+.about-text p{
+  font-size:17px;
+}
+
+.features{
+  gap:15px;
+}
+
+.feature{
+  padding:16px !important;
+
+  font-size:16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8fff0,
+      #fff5d9
+    ) !important;
+
+  border:1px solid #d7eadc;
+
+  border-radius:12px;
+
+  transition:.25s ease;
+}
+
+.feature:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+    0 10px 25px rgba(18,60,36,.12);
+}
+
+
+/* =====================================================
+   SAFARI ZONES
+   ===================================================== */
+
+.zones{
+  background:
+    linear-gradient(
+      135deg,
+      #e8f8ed,
+      #fff7df
+    ) !important;
+}
+
+.zone-grid{
+  gap:28px !important;
+}
+
+.zone-card{
+  overflow:hidden;
+
+  min-height:420px;
+
+  border:1px solid #dce9df;
+
+  border-radius:var(--radius);
+
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #f5fff7
+    );
+
+  box-shadow:
+    0 10px 28px rgba(18,60,36,.12);
+
+  transition:.3s ease;
+}
+
+.zone-card:nth-child(2){
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #fff9e8
+    );
+}
+
+.zone-card:nth-child(3){
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #eef7ff
+    );
+}
+
+.zone-card:nth-child(4){
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #fff0ed
+    );
+}
+
+.zone-card:nth-child(5){
+  background:
+    linear-gradient(
+      180deg,
+      #fff,
+      #f2ebff
+    );
+}
+
+.zone-card:hover{
+  transform:translateY(-7px);
+
+  box-shadow:
+    0 18px 40px rgba(18,60,36,.18);
+}
+
+.zone-card img{
+  width:100%;
+  height:240px !important;
+
+  object-fit:cover;
+}
+
+.zone-content{
+  padding:24px !important;
+}
+
+.zone-content h3{
+  font-size:25px !important;
+}
+
+.zone-content p{
+  font-size:16px !important;
+}
+
+.zone-card:nth-child(1) h3{
+  color:#16713d;
+}
+
+.zone-card:nth-child(2) h3{
+  color:#c48718;
+}
+
+.zone-card:nth-child(3) h3{
+  color:#2872bb;
+}
+
+.zone-card:nth-child(4) h3{
+  color:#c94d35;
+}
+
+.zone-card:nth-child(5) h3{
+  color:#6748a8;
+}
+
+
+/* =====================================================
+   WHY US
+   ===================================================== */
+
+.why{
+  background:
+    linear-gradient(
+      135deg,
+      #fffdf4,
+      #edf8ff
+    ) !important;
+}
+
+.why-grid{
+  gap:25px !important;
+}
+
+.why-card{
+  min-height:280px;
+
+  padding:30px !important;
+
+  border:1px solid #dce8e0;
+
+  border-radius:var(--radius);
+
+  box-shadow:
+    0 8px 24px rgba(18,60,36,.08);
+
+  transition:.3s ease;
+}
+
+.why-card:nth-child(1){
+  background:
+    linear-gradient(135deg,#e9fff2,#fff);
+}
+
+.why-card:nth-child(2){
+  background:
+    linear-gradient(135deg,#fff8df,#fff);
+}
+
+.why-card:nth-child(3){
+  background:
+    linear-gradient(135deg,#eaf6ff,#fff);
+}
+
+.why-card:nth-child(4){
+  background:
+    linear-gradient(135deg,#f4edff,#fff);
+}
+
+.why-card:hover{
+  transform:translateY(-7px);
+
+  box-shadow:
+    0 16px 35px rgba(18,60,36,.15);
+}
+
+.why-card .icon{
+  font-size:42px !important;
+}
+
+.why-card h3{
+  font-size:23px !important;
+}
+
+.why-card p{
+  font-size:16px !important;
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+
+.gallery{
+  background:
+    linear-gradient(
+      135deg,
+      #eef9ff,
+      #fff5df
+    ) !important;
+}
+
+.gallery-grid{
+  gap:22px !important;
+}
+
+.gallery-grid img,
+.gallery img{
+  width:100%;
+
+  min-height:230px;
+
+  object-fit:cover;
+
+  border:4px solid #fff;
+
+  border-radius:14px;
+
+  box-shadow:
+    0 8px 25px rgba(18,60,36,.14);
+
+  transition:.4s ease;
+}
+
+.gallery-grid img:nth-child(1){
+  border-color:#8fd4a8;
+}
+
+.gallery-grid img:nth-child(2){
+  border-color:#f0c85b;
+}
+
+.gallery-grid img:nth-child(3){
+  border-color:#8fc5e9;
+}
+
+.gallery-grid img:nth-child(4){
+  border-color:#e6a18f;
+}
+
+.gallery-grid img:nth-child(5){
+  border-color:#bda4e8;
+}
+
+.gallery-grid img:nth-child(6){
+  border-color:#8ed4c0;
+}
+
+.gallery-grid img:hover,
+.gallery img:hover{
+  transform:scale(1.035);
+
+  box-shadow:
+    0 16px 35px rgba(0,0,0,.18);
+}
+
+
+/* =====================================================
+   BOOKING CTA
+   ===================================================== */
+
+.booking-cta{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b3820,
+      #17613a,
+      #8a641b
+    ) !important;
+}
+
+.booking-cta::before{
+  content:"";
+
+  position:absolute;
+
+  width:300px;
+  height:300px;
+
+  left:-120px;
+  top:-120px;
+
+  border-radius:50%;
+
+  background:
+    rgba(231,180,63,.15);
+}
+
+.booking-cta .container{
+  position:relative;
+  z-index:2;
+}
+
+.booking-cta h2{
+  font-size:38px !important;
+}
+
+.booking-cta p{
+  font-size:18px !important;
+}
+
+
+/* =====================================================
+   CONTACT
+   ===================================================== */
+
+.contact{
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #eef8ff
+    ) !important;
+}
+
+.contact-grid{
+  gap:25px !important;
+}
+
+.contact-card{
+  min-height:280px;
+
+  padding:30px !important;
+
+  border:1px solid #dce9df;
+
+  border-radius:var(--radius);
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff,
+      #effaf2
+    ) !important;
+
+  box-shadow:
+    0 10px 28px rgba(18,60,36,.10);
+
+  transition:.3s ease;
+}
+
+.contact-card:nth-child(2){
+  background:
+    linear-gradient(
+      135deg,
+      #fffef5,
+      #fff1d7
+    ) !important;
+}
+
+.contact-card:hover{
+  transform:translateY(-5px);
+
+  box-shadow:
+    0 16px 34px rgba(18,60,36,.14);
+}
+
+.contact-card h3{
+  font-size:26px !important;
+}
+
+.contact-card p,
+.contact-card a{
+  font-size:16px;
+}
+
+
+/* =====================================================
+   BOOKING PAGE
+   ===================================================== */
+
+.booking-box{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #fbfff9
+    );
+
+  border:1px solid #e3ebe3;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+}
+
+.booking-box::before{
+  content:"";
+
+  position:absolute;
+
+  width:220px;
+  height:220px;
+
+  right:-110px;
+  top:-110px;
+
+  border-radius:50%;
+
+  background:
+    rgba(231,180,63,.12);
+
+  pointer-events:none;
+}
+
+
+/* =====================================================
+   FORM
+   ===================================================== */
+
+input,
+select,
+textarea{
+  border:1px solid #d6ded7;
+
+  background:#fbfdfb;
+
+  border-radius:10px;
+
+  min-height:46px;
+
+  transition:.2s ease;
+}
+
+input:hover,
+select:hover,
+textarea:hover{
+  border-color:#9db4a2;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  outline:none;
+
+  border-color:var(--gold);
+
+  background:#fff;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(231,180,63,.16);
+}
+
+textarea{
+  resize:vertical;
+}
+
+.booking-type{
+  display:flex;
+  gap:15px;
+}
+
+.type{
+  background:#fbfdfb;
+
+  border:2px solid #dfe7df;
+
+  border-radius:12px;
+
+  transition:.25s ease;
+}
+
+.type:hover{
+  border-color:var(--gold);
+
+  background:#fffaf0;
+
+  transform:translateY(-2px);
+}
+
+.type:has(input:checked){
+  border-color:var(--forest-light);
+
+  background:#edf8f0;
+
+  box-shadow:
+    0 6px 18px rgba(18,60,36,.08);
+}
+
+
+/* =====================================================
+   PRICE BOX
+   ===================================================== */
+
+#priceBox{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eff8f0,
+      #fff9e9
+    ) !important;
+
+  border:1px solid #dce8dc;
+
+  border-radius:15px;
+}
+
+#priceBox::after{
+  content:"₹";
+
+  position:absolute;
+
+  right:18px;
+  top:-8px;
+
+  font-size:85px;
+  font-weight:900;
+
+  color:rgba(18,60,36,.06);
+}
+
+#priceBox .total{
+  color:var(--forest);
+}
+
+.book-btn,
+.online-btn{
+  background:
+    linear-gradient(
+      135deg,
+      #f2c65c,
+      #d99d25
+    ) !important;
+
+  color:#17130a !important;
+
+  box-shadow:
+    0 8px 20px rgba(217,157,37,.25);
+}
+
+
+/* =====================================================
+   CONFIRMATION
+   ===================================================== */
+
+.box{
+  position:relative;
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff,
+      #f9fff9
+    );
+
+  border:1px solid #e1eae1;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+}
+
+.booking-id{
+  background:
+    linear-gradient(
+      135deg,
+      #edf8ef,
+      #fff7df
+    ) !important;
+
+  border:1px solid #dce8dc;
+
+  color:var(--forest);
+}
+
+.row{
+  padding:15px 8px !important;
+
+  border-bottom:
+    1px solid #e9eee9 !important;
+
+  transition:.2s ease;
+}
+
+.row:hover{
+  background:#f5faf5;
+
+  padding-left:12px !important;
+}
+
+.row strong{
+  color:var(--forest) !important;
+}
+
+.total-box{
+  background:
+    linear-gradient(
+      135deg,
+      #103820,
+      #277044
+    ) !important;
+
+  border-radius:15px;
+
+  box-shadow:
+    0 12px 28px rgba(18,60,36,.20);
+}
+
+.total-box .total{
+  color:var(--gold-light);
+}
+
+.payment{
+  background:
+    linear-gradient(
+      135deg,
+      #f1f8f2,
+      #fff9e9
+    ) !important;
+
+  border:1px solid #e1e9e1;
+
+  border-radius:15px;
+}
+
+.offline-btn{
+  border:1px solid #d8dfd9 !important;
+  background:#fff;
+}
+
+
+/* =====================================================
+   ADMIN
+   ===================================================== */
+
+.stats{
+  gap:20px;
+}
+
+.stat{
+  position:relative;
+  overflow:hidden;
+
+  min-height:170px;
+
+  border:1px solid #e0e9e1;
+
+  border-radius:var(--radius);
+
+  box-shadow:var(--shadow);
+
+  background:#fff;
+
+  transition:.25s ease;
+}
+
+.stat:hover{
+  transform:translateY(-5px);
+
+  box-shadow:var(--shadow-hover);
+}
+
+.stat strong{
+  color:var(--forest) !important;
+
+  font-size:30px;
+}
+
+.booking-box table{
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.booking-box th{
+  background:
+    linear-gradient(
+      135deg,
+      #edf6ee,
+      #fff8e5
+    ) !important;
+
+  color:var(--forest) !important;
+}
+
+.booking-box tr:hover{
+  background:#f7fbf7 !important;
+}
+
+.status-select{
+  border:1px solid
